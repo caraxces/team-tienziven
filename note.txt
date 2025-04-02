@@ -1,0 +1,101 @@
+[STATUS CODES]
+🔴 Not Started
+🟡 In Progress
+🟢 Completed
+⚪ Blocked
+🔵 In Review
+
+[PLANNED ENHANCEMENTS]
+1. Implement SSO integration
+2. Add OAuth2 support
+3. Enhance two-factor options
+4. Improve password policies
+5. Add biometric authentication
+
+[UI/UX IMPROVEMENTS]
+1. Modernize login interfaces
+2. Add 3D dashboard elements
+3. Improve error messages
+4. Enhanced mobile support
+5. Accessibility improvements
+
+[MONITORING SETUP]
+1. Set up authentication logging
+2. Configure error tracking
+3. Implement audit trails
+4. Set up performance monitoring
+5. Configure security alerts
+
+[MAINTENANCE TASKS]
+1. Regular security updates
+2. Database optimization
+3. Log rotation setup
+4. Backup configuration
+5. Cache management
+
+[TECHNICAL DOCUMENTATION]
+1. Update API documentation
+2. Document database schema
+3. Create authentication flow diagrams
+4. Document Docker setup
+5. Create troubleshooting guide
+
+[USER DOCUMENTATION]
+1. Staff login guide
+2. Client portal guide
+3. Password reset instructions
+4. Two-factor setup guide
+5. Permission level explanation
+
+[AUTHENTICATION TESTING]
+1. Staff login flow
+2. Client login flow
+3. Password reset process
+4. Two-factor authentication
+5. Session management
+6. Remember me functionality
+
+[PERMISSION TESTING]
+1. Staff access levels
+2. Client portal access
+3. Guest view permissions
+4. API authentication
+5. File access permissions
+
+Create New Records
+Shift + C – Create New Customer
+Shift + I – Create New Invoice
+Shift + E – Create New Estimate
+Ctrl+Shift+P – Create New proposal
+Ctrl+Shift+E – Create New Expense
+Shift+L – Create New Lead (opens the lead modal)
+Shift+T – Create New Task (opens new task modal)
+Shift+P – Create New Project
+Shift+S – Create New Support Ticket
+Ctrl+Shift+S – Create New Staff Member
+Navigate To Specific Areas
+Alt+D – Go To Dashboard
+Alt+C – Go To Customers List
+Alt+T – Go To Tasks List
+Alt+I – Go To Invoices List
+Alt+E – Go To Estimates List
+Alt+P – Go To Projects List
+Alt+L – Go To Leads List
+Ctrl+Alt+T – Go To Tickets List
+Ctrl+Alt+E – Go To Expenses List
+Alt+R – Go To Sales Report
+Alt+S – Go To Settings
+Misc
+Shift+K – Top search bar focus and ready for searching
+Shift+D – Tables search focus and ready for searching (matches only first table found in the document)
+Ctrl+Shift+L – Logout
+Shift + F – Toggle sidebar visibility(v2.7.0)
+Conditional hotkeys
+Shift+F
+Mark the current task as finished – Applicable only when task modal is opened
+Shift+E
+Edit current task – Applicable only when task modal is opened
+Edit lead – Applicable only when the lead modal is opened
+Shift+C
+Convert a current lead to a customer – Applicable only when the lead modal is opened
+Create new task comment – Applicable only when the task modal is opened

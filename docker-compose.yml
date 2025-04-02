@@ -1,0 +1,69 @@
+# version: '3'
+
+services:
+  # PHP Apache Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: team-tienziven/php
+    container_name: team-tienziven-app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    depends_on:
+      - db
+    networks:
+      - tienziven-network
+    environment:
+      DB_HOST: db
+      DB_DATABASE: perfex
+      DB_USERNAME: perfex_user
+      DB_PASSWORD: perfex_password
+
+  # MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: team-tienziven-db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: perfex
+      MYSQL_USER: perfex_user
+      MYSQL_PASSWORD: perfex_password
+      MYSQL_ROOT_PASSWORD: root_password
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./maoknyyx_perfex.sql:/docker-entrypoint-initdb.d/maoknyyx_perfex.sql
+    networks:
+      - tienziven-network
+
+  # phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: team-tienziven-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - db
+    networks:
+      - tienziven-network
+
+# Networks
+networks:
+  tienziven-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  dbdata:
+    driver: local 
