@@ -1253,6 +1253,7 @@ class Projects extends AdminController
             $response['debug_info']['csv_data_sample'] = !empty($csv_data) ? array_slice($csv_data, 0, 1) : [];
             
             $imported_count = 0;
+            $updated_count = 0;
             $failed_count = 0;
             
             foreach ($csv_data as $row) {
@@ -1332,40 +1333,70 @@ class Projects extends AdminController
                 // Add extra fields that the model expects
                 $data['addedfrom'] = get_staff_user_id();
                 
-                // Try to add the project
+                // Check if a project with this name already exists
+                $this->db->where('name', $data['name']);
+                $existing_project = $this->db->get(db_prefix() . 'projects')->row();
+                
+                // Try to add or update the project
                 try {
-                    // Call the add method directly without using projects_model->add
-                    // to avoid format issues with dates
-                    $this->db->insert(db_prefix() . 'projects', $data);
-                    $insert_id = $this->db->insert_id();
-                    
-                    if ($insert_id) {
-                        // Add default project settings
-                        $settings = $this->projects_model->get_settings();
-                        foreach ($settings as $setting) {
-                            $this->db->insert(db_prefix() . 'project_settings', [
-                                'project_id' => $insert_id,
-                                'name' => $setting,
-                                'value' => 0,
-                            ]);
+                    if ($existing_project) {
+                        // Update existing project
+                        $this->db->where('id', $existing_project->id);
+                        $this->db->update(db_prefix() . 'projects', $data);
+                        
+                        if ($this->db->affected_rows() > 0) {
+                            // Log activity for update
+                            $this->projects_model->log_activity($existing_project->id, 'project_activity_updated');
+                            
+                            $updated_count++;
+                            $response['results'][] = [
+                                'name' => $data['name'],
+                                'success' => true,
+                                'message' => 'Project updated successfully',
+                                'error' => ''
+                            ];
+                        } else {
+                            $failed_count++;
+                            $response['results'][] = [
+                                'name' => $data['name'],
+                                'success' => false,
+                                'error' => 'Failed to update existing project'
+                            ];
                         }
-                        
-                        // Log activity
-                        $this->projects_model->log_activity($insert_id, 'project_activity_created');
-                        
-                        $imported_count++;
-                        $response['results'][] = [
-                            'name' => $data['name'],
-                            'success' => true,
-                            'error' => ''
-                        ];
                     } else {
-                        $failed_count++;
-                        $response['results'][] = [
-                            'name' => $data['name'],
-                            'success' => false,
-                            'error' => $this->db->error()['message']
-                        ];
+                        // Create new project
+                        $this->db->insert(db_prefix() . 'projects', $data);
+                        $insert_id = $this->db->insert_id();
+                        
+                        if ($insert_id) {
+                            // Add default project settings
+                            $settings = $this->projects_model->get_settings();
+                            foreach ($settings as $setting) {
+                                $this->db->insert(db_prefix() . 'project_settings', [
+                                    'project_id' => $insert_id,
+                                    'name' => $setting,
+                                    'value' => 0,
+                                ]);
+                            }
+                            
+                            // Log activity
+                            $this->projects_model->log_activity($insert_id, 'project_activity_created');
+                            
+                            $imported_count++;
+                            $response['results'][] = [
+                                'name' => $data['name'],
+                                'success' => true,
+                                'message' => 'Project created successfully',
+                                'error' => ''
+                            ];
+                        } else {
+                            $failed_count++;
+                            $response['results'][] = [
+                                'name' => $data['name'],
+                                'success' => false,
+                                'error' => $this->db->error()['message']
+                            ];
+                        }
                     }
                 } catch (Exception $e) {
                     $failed_count++;
@@ -1380,6 +1411,10 @@ class Projects extends AdminController
             // Set response messages
             if ($imported_count > 0) {
                 $response['success'] = sprintf(_l('projects_imported_successfully'), $imported_count);
+            }
+            
+            if ($updated_count > 0) {
+                $response['success'] .= ($response['success'] ? ' ' : '') . sprintf('Updated %d existing projects successfully.', $updated_count);
             }
             
             if ($failed_count > 0) {
