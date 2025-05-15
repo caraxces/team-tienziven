@@ -1,26 +1,6 @@
 <?php
 
-# Version 1.0.0
-#
-# General
-$lang['id']                   = 'ID';
-$lang['name']                 = 'Name';
-$lang['options']              = 'Options';
-$lang['submit']               = 'Save';
-$lang['added_successfully']   = '%s added successfully.';
-$lang['updated_successfully'] = '%s updated successfully.';
-$lang['edit']                 = 'Edit %s';
-$lang['add_new']              = 'Add New %s';
-$lang['deleted']              = '%s deleted';
-$lang['problem_deleting']     = 'Problem deleting %s';
-$lang['is_referenced']        = 'The ID of the %s is already using.';
-$lang['close']                = 'Close';
-$lang['send']                 = 'Send';
-$lang['cancel']               = 'Cancel';
-$lang['go_back']              = 'Go Back';
-$lang['error_uploading_file'] = 'Error uploading file';
-$lang['load_more']            = 'Load More';
-$lang['cant_delete_default']  = 'Cant delete default %s';
+# Version 1.0.0## General$lang['id']                   = 'ID';$lang['name']                 = 'Name';$lang['options']              = 'Options';$lang['submit']               = 'Save';$lang['added_successfully']   = '%s added successfully.';$lang['updated_successfully'] = '%s updated successfully.';$lang['edit']                 = 'Edit %s';$lang['add_new']              = 'Add New %s';$lang['deleted']              = '%s deleted';$lang['problem_deleting']     = 'Problem deleting %s';$lang['is_referenced']        = 'The ID of the %s is already using.';$lang['close']                = 'Close';$lang['send']                 = 'Send';$lang['cancel']               = 'Cancel';$lang['go_back']              = 'Go Back';$lang['error_uploading_file'] = 'Error uploading file';$lang['load_more']            = 'Load More';$lang['cant_delete_default']  = 'Cant delete default %s';# CSV Import$lang['import_csv']                        = 'Import CSV';$lang['import_projects_from_csv']          = 'Import Projects from CSV';$lang['choose_csv_file']                   = 'Choose CSV File';$lang['csv_file_has_header_row']           = 'CSV file has header row';$lang['csv_file_sample']                   = 'CSV File Sample';$lang['csv_file_notes']                    = 'CSV Import Notes';$lang['required_fields']                   = 'Required fields';$lang['status_values']                     = 'Status values';$lang['billing_type_values']               = 'Billing type values';$lang['date_format']                       = 'Date format';$lang['import']                            = 'Import';$lang['importing']                         = 'Importing...';$lang['import_results']                    = 'Import Results';$lang['imported']                          = 'Imported';$lang['not_imported']                      = 'Not Imported';$lang['import_status']                     = 'Import Status';$lang['error_details']                     = 'Error Details';$lang['no_file_uploaded_or_file_error']    = 'No file uploaded or file upload error';$lang['file_not_csv']                      = 'The uploaded file is not a CSV file';$lang['file_size_too_large']               = 'File size is too large (max 3MB)';$lang['unable_to_parse_csv']               = 'Unable to parse CSV file';$lang['required_fields_missing']           = 'Required fields are missing';$lang['failed_to_import']                  = 'Failed to import project';$lang['projects_imported_successfully']    = '%s projects imported successfully';$lang['some_projects_failed_to_import']    = '%s projects failed to import';$lang['no_data_in_csv_file']               = 'No data found in CSV file';$lang['error_occurred']                    = 'An error occurred';$lang['missing_project_name']              = '[Missing Project Name]';$lang['project_name']                      = 'Project Name';
 
 # Invoice General
 $lang['invoice_status_paid']                   = 'Paid';

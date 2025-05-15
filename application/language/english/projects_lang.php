@@ -1,0 +1,45 @@
+<?php
+
+# CSV Import
+$lang['import_csv']                        = 'Import CSV';
+$lang['import_projects_from_csv']          = 'Import Projects from CSV';
+$lang['choose_csv_file']                   = 'Choose CSV File';
+$lang['csv_file_has_header_row']           = 'CSV file has header row';
+$lang['csv_file_sample']                   = 'CSV File Sample';
+$lang['csv_file_notes']                    = 'CSV Import Notes';
+$lang['required_fields']                   = 'Required fields';
+$lang['status_values']                     = 'Status values';
+$lang['billing_type_values']               = 'Billing type values';
+$lang['date_format']                       = 'Date format';
+$lang['import']                            = 'Import';
+$lang['importing']                         = 'Importing...';
+$lang['import_results']                    = 'Import Results';
+$lang['imported']                          = 'Imported';
+$lang['not_imported']                      = 'Not Imported';
+$lang['import_status']                     = 'Import Status';
+$lang['error_details']                     = 'Error Details';
+$lang['no_file_uploaded_or_file_error']    = 'No file uploaded or file upload error';
+$lang['file_not_csv']                      = 'The uploaded file is not a CSV file';
+$lang['file_size_too_large']               = 'File size is too large (max 3MB)';
+$lang['unable_to_parse_csv']               = 'Unable to parse CSV file';
+$lang['required_fields_missing']           = 'Required fields are missing';
+$lang['failed_to_import']                  = 'Failed to import project';
+$lang['projects_imported_successfully']    = '%s projects imported successfully';
+$lang['some_projects_failed_to_import']    = '%s projects failed to import';
+$lang['no_data_in_csv_file']               = 'No data found in CSV file';
+$lang['error_occurred']                    = 'An error occurred';
+$lang['missing_project_name']              = '[Missing Project Name]';
+$lang['project_name']                      = 'Project Name';
+$lang['download_sample']                   = 'Download Sample Template';
+$lang['debug_info']                        = 'Debug Information';
+$lang['import_instructions']               = 'Import Instructions';
+$lang['download_sample_first']             = 'Download the sample template first';
+$lang['fill_required_fields']              = 'Fill in at least the required fields (name and clientid)';
+$lang['make_sure_format_correct']          = 'Make sure the format matches the sample template';
+$lang['save_as_csv_utf8']                  = 'Save your file as CSV (UTF-8 encoding recommended)';
+$lang['max_file_size_3mb']                 = 'Maximum file size: 3MB';
+$lang['first_row_column_names']            = 'The first row should contain column names like "name, clientid, etc."';
+$lang['project_name_field']                = 'The name of the project';
+$lang['client_id_field']                   = 'The numeric ID of the client';
+$lang['format_yyyy_mm_dd']                 = 'Date format YYYY-MM-DD';
+$lang['or']                                = 'or'; 

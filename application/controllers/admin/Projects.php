@@ -1179,8 +1179,322 @@ class Projects extends AdminController
 
                 return $_member;
             }, $members);
-
+            
             echo json_encode($members);
         }
+    }
+
+    /**
+     * Import projects from CSV file
+     */
+    public function import_csv()
+    {
+        if (!staff_can('create', 'projects')) {
+            ajax_access_denied();
+        }
+        
+        $response = [
+            'success' => '',
+            'error' => '',
+            'warning' => '',
+            'results' => [],
+            'debug_info' => []  // Add debug information
+        ];
+        
+        try {
+            // Check if file is uploaded
+            if (!isset($_FILES['csv_file']) || $_FILES['csv_file']['error'] != 0) {
+                $response['error'] = _l('no_file_uploaded_or_file_error');
+                echo json_encode($response);
+                return;
+            }
+            
+            // Validate file extension
+            $file_ext = pathinfo($_FILES['csv_file']['name'], PATHINFO_EXTENSION);
+            if (strtolower($file_ext) != 'csv') {
+                $response['error'] = _l('file_not_csv');
+                echo json_encode($response);
+                return;
+            }
+            
+            // Validate file size (max 3MB)
+            if ($_FILES['csv_file']['size'] > 3 * 1024 * 1024) {
+                $response['error'] = _l('file_size_too_large');
+                echo json_encode($response);
+                return;
+            }
+            
+            // Get file data
+            $csv_file = $_FILES['csv_file']['tmp_name'];
+            
+            // Get has_header flag
+            $has_header = $this->input->post('has_header') ? true : false;
+            
+            // Load csvimport library
+            $this->load->library('csvimport');
+            
+            // Parse CSV file
+            $csv_data = $this->csvimport->get_array($csv_file);
+            
+            if (!$csv_data) {
+                $response['error'] = _l('unable_to_parse_csv');
+                echo json_encode($response);
+                return;
+            }
+            
+            // If has header, remove first row
+            if ($has_header && count($csv_data) > 0) {
+                $headers = array_shift($csv_data);
+                $response['debug_info']['headers'] = $headers;
+            }
+            
+            // Debug information
+            $response['debug_info']['csv_data_count'] = count($csv_data);
+            $response['debug_info']['csv_data_sample'] = !empty($csv_data) ? array_slice($csv_data, 0, 1) : [];
+            
+            $imported_count = 0;
+            $failed_count = 0;
+            
+            foreach ($csv_data as $row) {
+                // Debug check for keys
+                $response['debug_info']['row_keys'][] = array_keys($row);
+                
+                // For CSV files without header or to ensure correct mapping
+                $data = [];
+                
+                // Map data from the CSV to correct fields
+                $data['name'] = isset($row[0]) ? trim($row[0]) : '';
+                $data['clientid'] = isset($row[1]) ? trim($row[1]) : '';
+                $data['start_date'] = isset($row[2]) && !empty($row[2]) ? $this->format_date($row[2]) : date('Y-m-d');
+                $data['deadline'] = isset($row[3]) && !empty($row[3]) ? $this->format_date($row[3]) : null;
+                $data['status'] = isset($row[4]) && !empty($row[4]) ? trim($row[4]) : 1;
+                
+                // Handle billing type
+                if (isset($row[5]) && !empty($row[5])) {
+                    // Convert text billing type to numeric value if needed
+                    if ($row[5] == 'fixed_rate') {
+                        $data['billing_type'] = 1;  // Make sure these values match your database values
+                    } else if ($row[5] == 'hourly_rate') {
+                        $data['billing_type'] = 2;
+                    } else {
+                        $data['billing_type'] = intval($row[5]);
+                    }
+                } else {
+                    $data['billing_type'] = 1; // Default to fixed_rate
+                }
+                
+                $data['description'] = isset($row[6]) ? $row[6] : '';
+                
+                // Add other optional fields if present
+                if (isset($row[7]) && !empty($row[7])) {
+                    $data['project_cost'] = trim($row[7]);
+                }
+                
+                if (isset($row[8]) && !empty($row[8])) {
+                    $data['project_rate_per_hour'] = trim($row[8]);
+                }
+                
+                if (isset($row[9]) && !empty($row[9])) {
+                    $data['estimated_hours'] = trim($row[9]);
+                }
+                
+                // Add original row to debug info
+                $response['debug_info']['mapped_data'][] = $data;
+                
+                // Validate required fields
+                if (empty($data['name']) || empty($data['clientid'])) {
+                    $result = [
+                        'name' => !empty($data['name']) ? $data['name'] : _l('missing_project_name'),
+                        'success' => false,
+                        'error' => _l('required_fields_missing') . ': ' . 
+                               (empty($data['name']) ? 'name' : '') . 
+                               (empty($data['clientid']) ? (empty($data['name']) ? ', clientid' : 'clientid') : '')
+                    ];
+                    $response['results'][] = $result;
+                    $failed_count++;
+                    continue;
+                }
+
+                // Make sure clientid is a valid client
+                $this->db->where('userid', $data['clientid']);
+                $client = $this->db->get(db_prefix() . 'clients')->row();
+                if (!$client) {
+                    $result = [
+                        'name' => $data['name'],
+                        'success' => false,
+                        'error' => 'Client ID ' . $data['clientid'] . ' not found in database'
+                    ];
+                    $response['results'][] = $result;
+                    $failed_count++;
+                    continue;
+                }
+                
+                // Add extra fields that the model expects
+                $data['addedfrom'] = get_staff_user_id();
+                
+                // Try to add the project
+                try {
+                    // Call the add method directly without using projects_model->add
+                    // to avoid format issues with dates
+                    $this->db->insert(db_prefix() . 'projects', $data);
+                    $insert_id = $this->db->insert_id();
+                    
+                    if ($insert_id) {
+                        // Add default project settings
+                        $settings = $this->projects_model->get_settings();
+                        foreach ($settings as $setting) {
+                            $this->db->insert(db_prefix() . 'project_settings', [
+                                'project_id' => $insert_id,
+                                'name' => $setting,
+                                'value' => 0,
+                            ]);
+                        }
+                        
+                        // Log activity
+                        $this->projects_model->log_activity($insert_id, 'project_activity_created');
+                        
+                        $imported_count++;
+                        $response['results'][] = [
+                            'name' => $data['name'],
+                            'success' => true,
+                            'error' => ''
+                        ];
+                    } else {
+                        $failed_count++;
+                        $response['results'][] = [
+                            'name' => $data['name'],
+                            'success' => false,
+                            'error' => $this->db->error()['message']
+                        ];
+                    }
+                } catch (Exception $e) {
+                    $failed_count++;
+                    $response['results'][] = [
+                        'name' => $data['name'],
+                        'success' => false,
+                        'error' => $e->getMessage()
+                    ];
+                }
+            }
+            
+            // Set response messages
+            if ($imported_count > 0) {
+                $response['success'] = sprintf(_l('projects_imported_successfully'), $imported_count);
+            }
+            
+            if ($failed_count > 0) {
+                $response['warning'] = sprintf(_l('some_projects_failed_to_import'), $failed_count);
+            }
+            
+            if (count($csv_data) == 0) {
+                $response['error'] = _l('no_data_in_csv_file');
+            }
+        } catch (Exception $e) {
+            // Catch any unexpected errors
+            $response['error'] = 'Error: ' . $e->getMessage();
+            $response['debug_info']['exception'] = $e->getTraceAsString();
+        }
+        
+        // Output the response as JSON
+        echo json_encode($response);
+    }
+    
+    /**
+     * Helper function to format dates correctly
+     */
+    private function format_date($date_string)
+    {
+        if (empty($date_string)) {
+            return null;
+        }
+        
+        // Check if already in YYYY-MM-DD format
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date_string)) {
+            return $date_string;
+        }
+        
+        // Try to parse date into SQL format
+        try {
+            // Handle common formats
+            if (preg_match('/^\d{2}\/\d{2}\/\d{4}$/', $date_string)) {
+                // MM/DD/YYYY format
+                $parts = explode('/', $date_string);
+                return $parts[2] . '-' . $parts[0] . '-' . $parts[1];
+            }
+            
+            if (preg_match('/^\d{2}\.\d{2}\.\d{4}$/', $date_string)) {
+                // DD.MM.YYYY format
+                $parts = explode('.', $date_string);
+                return $parts[2] . '-' . $parts[1] . '-' . $parts[0];
+            }
+            
+            // Let PHP try to parse it
+            $timestamp = strtotime($date_string);
+            if ($timestamp === false) {
+                // Could not parse date
+                return date('Y-m-d');
+            }
+            
+            return date('Y-m-d', $timestamp);
+        } catch (Exception $e) {
+            // If any error, return current date
+            return date('Y-m-d');
+        }
+    }
+
+    /**
+     * Generate and download sample CSV template
+     */
+    public function download_import_sample()
+    {
+        if (!staff_can('create', 'projects')) {
+            access_denied('Projects');
+        }
+        
+        // Set headers for CSV download
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=projects_import_template.csv');
+        
+        // Create a file pointer connected to the output stream
+        $output = fopen('php://output', 'w');
+        
+        // Add UTF-8 BOM for Excel compatibility
+        fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+        
+        // Set column headers with clear descriptions
+        fputcsv($output, [
+            'name (required)', 
+            'clientid (required)', 
+            'start_date (YYYY-MM-DD)', 
+            'deadline (YYYY-MM-DD)', 
+            'status (1-5)', 
+            'billing_type (fixed_rate/hourly_rate)', 
+            'description',
+            'project_cost',
+            'project_rate_per_hour',
+            'estimated_hours'
+        ]);
+        
+        // Add sample data
+        fputcsv($output, ['Example Project 1', '1', '2023-10-01', '2023-12-31', '2', 'fixed_rate', 'This is a sample project description', '5000', '', '']);
+        fputcsv($output, ['Example Project 2', '2', '2023-11-15', '2024-02-28', '1', 'hourly_rate', 'Another sample project with hourly billing', '', '100', '40']);
+        
+        // Add descriptions row to help users understand the columns
+        fputcsv($output, [
+            '(Project name)', 
+            '(Client ID number)', 
+            '(Project start date)', 
+            '(Project deadline)', 
+            '(1=Not Started, 2=In Progress, 3=On Hold, 4=Finished, 5=Canceled)', 
+            '(fixed_rate or hourly_rate)',
+            '(Project description)',
+            '(Total project cost for fixed_rate projects)',
+            '(Hourly rate for hourly_rate projects)',
+            '(Estimated hours for the project)'
+        ]);
+        
+        // Close the file pointer
+        fclose($output);
+        exit;
     }
 }
