@@ -1,0 +1,428 @@
+/**
+ * Red Dashboard Theme for Perfex CRM
+ * Makes the dashboard look similar to the image provided
+ */
+
+/* Dashboard Statistics Cards */
+.dashboard-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card .card-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-card .card-content {
+  padding: 20px;
+}
+
+.dashboard-card .card-footer {
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #f1f1f1;
+  font-size: 13px;
+  color: #71717a;
+}
+
+/* Statistics Widgets */
+.quick-stats-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.quick-stats {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  flex: 1 1 220px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.quick-stats:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.quick-stats .stats-heading {
+  font-size: 14px;
+  color: #71717a;
+  margin-bottom: 10px;
+}
+
+.quick-stats .stats-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.quick-stats .stats-trend {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.quick-stats .stats-trend.positive {
+  color: #84c529;
+}
+
+.quick-stats .stats-trend.negative {
+  color: #fc2d42;
+}
+
+.quick-stats .stats-chart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100px;
+  height: 50px;
+  opacity: 0.8;
+}
+
+.quick-stats .stats-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(233, 60, 60, 0.15);
+  font-size: 24px;
+}
+
+/* Red themed stats cards */
+.quick-stats.red {
+  background: linear-gradient(135deg, #e93c3c, #c82333);
+  color: white;
+}
+
+.quick-stats.red .stats-heading,
+.quick-stats.red .stats-value {
+  color: white;
+}
+
+.quick-stats.red .stats-chart path {
+  stroke: rgba(255, 255, 255, 0.7);
+}
+
+.quick-stats.light-red {
+  background: linear-gradient(135deg, #fc4a4a, #e93c3c);
+  color: white;
+}
+
+.quick-stats.light-red .stats-heading,
+.quick-stats.light-red .stats-value {
+  color: white;
+}
+
+/* Chart Containers */
+.chart-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.chart-container .chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-container .chart-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-container .chart-options {
+  display: flex;
+  align-items: center;
+}
+
+.chart-container .chart-options button {
+  background: none;
+  border: none;
+  color: #71717a;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.chart-container .chart-content {
+  height: 300px;
+}
+
+/* Map Visualizations */
+.map-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.map-container .map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.map-container .map-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.map-container .map-content {
+  height: 300px;
+  position: relative;
+}
+
+.map-container .map-legend {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.map-container .legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 13px;
+  color: #71717a;
+}
+
+.map-container .legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+
+/* Data Tables */
+.data-table-container {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.data-table-container .table-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-table-container .table-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.data-table-container .table-actions {
+  display: flex;
+  align-items: center;
+}
+
+.data-table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table-container th {
+  background-color: #f8f9fa;
+  padding: 12px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e93c3c;
+}
+
+.data-table-container td {
+  padding: 12px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #71717a;
+}
+
+.data-table-container tr:hover td {
+  background-color: #f8f9fa;
+}
+
+.data-table-container .table-footer {
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Activity Feed */
+.activity-feed-container {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.activity-feed-container .feed-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-feed-container .feed-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.activity-feed-container .feed-content {
+  padding: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activity-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item .activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(233, 60, 60, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: #e93c3c;
+}
+
+.activity-item .activity-content {
+  flex: 1;
+}
+
+.activity-item .activity-title {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.activity-item .activity-time {
+  font-size: 12px;
+  color: #71717a;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  margin-bottom: 25px;
+}
+
+.dashboard-header .title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dashboard-header .subtitle {
+  font-size: 14px;
+  color: #71717a;
+}
+
+.dashboard-header .date-range {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #71717a;
+  margin-top: 10px;
+}
+
+/* Calendar Widget */
+.calendar-widget {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.calendar-widget .calendar-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-widget .calendar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.calendar-widget .calendar-content {
+  padding: 20px;
+}
+
+.calendar-widget .fc-event {
+  background-color: #e93c3c;
+  border-color: #c82333;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.calendar-widget .fc-today {
+  background-color: rgba(233, 60, 60, 0.1);
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.dashboard-column {
+  padding: 10px;
+  flex: 1 1 350px;
+} 

@@ -112,6 +112,12 @@ return App_table::find('tickets')
             $where[] = $filtersWhere;
         }
 
+        // Staff ID filter - for performance dashboard
+        if ($this->ci->input->get('staffid')) {
+            $staff_id = $this->ci->input->get('staffid');
+            array_push($where, 'AND assigned = ' . $this->ci->db->escape_str($staff_id));
+        }
+
         if (isset($userid) && $userid != '') {
             array_push($where, 'AND ' . db_prefix() . 'tickets.userid = ' . $this->ci->db->escape_str($userid));
         } elseif (isset($by_email)) {

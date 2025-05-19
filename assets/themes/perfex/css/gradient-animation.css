@@ -1,0 +1,166 @@
+/**
+ * Gradient Animation CSS for Perfex CRM
+ * Creates dynamic red-white gradient effects for header, footer and body
+ */
+
+/* Keyframes for gradient animations */
+@keyframes headerGradient {
+  0% {
+    background: linear-gradient(90deg, #e93c3c 0%, #ffffff 100%);
+  }
+  50% {
+    background: linear-gradient(90deg, #ffffff 0%, #e93c3c 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, #e93c3c 0%, #ffffff 100%);
+  }
+}
+
+@keyframes footerGradient {
+  0% {
+    background: linear-gradient(90deg, #ffffff 0%, #e93c3c 100%);
+  }
+  50% {
+    background: linear-gradient(90deg, #e93c3c 0%, #ffffff 100%);
+  }
+  100% {
+    background: linear-gradient(90deg, #ffffff 0%, #e93c3c 100%);
+  }
+}
+
+@keyframes bodyGradient {
+  0% {
+    background: linear-gradient(135deg, rgba(233, 60, 60, 0.05) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(233, 60, 60, 0.1) 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(233, 60, 60, 0.1) 50%, rgba(255, 255, 255, 0.9) 100%);
+  }
+  100% {
+    background: linear-gradient(135deg, rgba(233, 60, 60, 0.05) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(233, 60, 60, 0.1) 100%);
+  }
+}
+
+/* Header styles with gradient animation */
+.navbar-default {
+  animation: headerGradient 15s infinite;
+  background-size: 200% 200%;
+  border-color: transparent !important;
+  box-shadow: 0 1px 10px rgba(233, 60, 60, 0.2) !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #333 !important;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+  color: #e93c3c !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Footer styles with gradient animation */
+.footer {
+  animation: footerGradient 15s infinite;
+  background-size: 200% 200%;
+  border-top: 1px solid rgba(233, 60, 60, 0.1);
+  padding: 20px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.footer .copyright-footer {
+  color: #333;
+  font-weight: 500;
+}
+
+.footer a {
+  color: #e93c3c;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #c82333;
+  text-decoration: none;
+}
+
+/* Body styles with gradient animation */
+body {
+  animation: bodyGradient 20s infinite;
+  background-size: 400% 400%;
+}
+
+/* Make links in gradient areas more readable */
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+  color: #e93c3c;
+  font-weight: bold;
+}
+
+/* Add transition effects for smoother hover states */
+.navbar-default .navbar-nav > li > a,
+.footer a,
+.btn {
+  transition: all 0.3s ease;
+}
+
+/* Enhance panels with subtle gradient borders */
+.panel {
+  border: 1px solid rgba(233, 60, 60, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e93c3c, #ffffff, #e93c3c);
+  background-size: 200% 200%;
+  animation: headerGradient 10s infinite;
+}
+
+/* Make dashboard cards pop with subtle animations on hover */
+.dashboard-card:hover,
+.quick-stats:hover,
+.panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(233, 60, 60, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Custom scrollbar with gradient */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #e93c3c, #ffffff);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+
+/* Dropdown menu with gradient */
+.dropdown-menu {
+  background: linear-gradient(to bottom right, #ffffff, rgba(233, 60, 60, 0.05));
+  border: 1px solid rgba(233, 60, 60, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+  background-color: rgba(233, 60, 60, 0.1);
+  color: #e93c3c;
+} 

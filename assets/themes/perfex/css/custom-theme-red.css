@@ -1,0 +1,230 @@
+/**
+ * Custom Red Theme for Perfex CRM
+ * This theme applies a red color scheme similar to the provided image
+ */
+
+/* Main Colors */
+:root {
+  --primary-color: #e93c3c;
+  --primary-light: #fc4a4a;
+  --primary-dark: #c82333;
+  --secondary-color: #f8fafc;
+  --text-color: #334155;
+  --text-light: #71717a;
+  --border-color: #e5e7eb;
+  --success-color: #84c529;
+  --warning-color: #ff6f00;
+  --info-color: #03a9f4;
+  --danger-color: #fc2d42;
+}
+
+/* Body and General Styles */
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  background: var(--secondary-color);
+}
+
+/* Header and Navigation */
+.navbar-default {
+  background-color: #ffffff;
+  border-color: var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+  color: var(--primary-color);
+  background-color: transparent;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.btn-primary:hover,
+.open > .dropdown-toggle.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Panels and Cards */
+.panel {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+}
+
+.panel-heading {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.panel-primary {
+  border-color: var(--primary-color);
+}
+
+.panel-primary > .panel-heading {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Dashboard Widgets */
+.widget-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.widget-card .widget-header {
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.widget-card .widget-content {
+  padding: 15px;
+}
+
+/* Charts and Graphs */
+.highcharts-color-0 {
+  fill: var(--primary-light);
+  stroke: var(--primary-light);
+}
+
+.highcharts-color-1 {
+  fill: var(--primary-color);
+  stroke: var(--primary-color);
+}
+
+.highcharts-color-2 {
+  fill: var(--primary-dark);
+  stroke: var(--primary-dark);
+}
+
+/* Progress Bars */
+.progress-bar-primary {
+  background-color: var(--primary-color);
+}
+
+/* Calendar */
+.fc-event {
+  background-color: var(--primary-color);
+  border-color: var(--primary-dark);
+}
+
+.fc-today {
+  background-color: rgba(233, 60, 60, 0.1);
+}
+
+/* Tabs */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+/* Tables */
+.table.dataTable thead th {
+  background-color: #f9fafb;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9fafb;
+}
+
+/* Custom Styles for Maps */
+.map-container .map-region.highlighted {
+  fill: var(--primary-light);
+}
+
+.map-container .map-region {
+  fill: rgba(233, 60, 60, 0.3);
+}
+
+/* Statistics Cards */
+.stat-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.stat-card .stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.stat-card .stat-label {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.stat-card .stat-chart {
+  height: 50px;
+  margin-top: 10px;
+}
+
+/* Modern Data Visualizations */
+.chart-container {
+  position: relative;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+/* Activity Feed */
+.activity-feed .feed-item:after {
+  background-color: var(--primary-light);
+}
+
+/* Custom Badge and Label Styles */
+.badge-primary, .label-primary {
+  background-color: var(--primary-color);
+}
+
+/* Status Indicators */
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.status-indicator.active {
+  background-color: var(--success-color);
+}
+
+.status-indicator.warning {
+  background-color: var(--warning-color);
+}
+
+.status-indicator.danger {
+  background-color: var(--danger-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .panel, .widget-card, .stat-card {
+    border-radius: 6px;
+  }
+  
+  .panel-heading {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+} 

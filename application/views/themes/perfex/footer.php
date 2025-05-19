@@ -23,3 +23,11 @@
         </div>
     </div>
 </footer>
+
+<!-- Load custom gradient animation script -->
+<script src="<?= base_url('assets/themes/perfex/js/gradient-animation.js'); ?>"></script>
+
+<?php if(basename($_SERVER['SCRIPT_NAME']) == 'dashboard.php' || strpos($_SERVER['REQUEST_URI'], 'dashboard') !== false): ?>
+<!-- Load custom dashboard scripts -->
+<script src="<?= base_url('assets/themes/perfex/js/dashboard-red.js'); ?>"></script>
+<?php endif; ?>

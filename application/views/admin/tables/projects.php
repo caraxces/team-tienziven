@@ -38,6 +38,12 @@ return App_table::find('projects')
         if ($clientid != '') {
             array_push($where, ' AND clientid=' . $this->ci->db->escape_str($clientid));
         }
+        
+        // Staff ID filter - for performance dashboard
+        if ($this->ci->input->get('staffid')) {
+            $staff_id = $this->ci->input->get('staffid');
+            array_push($where, ' AND ' . db_prefix() . 'projects.id IN (SELECT project_id FROM ' . db_prefix() . 'project_members WHERE staff_id=' . $this->ci->db->escape_str($staff_id) . ')');
+        }
 
         if (staff_cant('view', 'projects')) {
             array_push($where, ' AND ' . db_prefix() . 'projects.id IN (SELECT project_id FROM ' . db_prefix() . 'project_members WHERE staff_id=' . get_staff_user_id() . ')');

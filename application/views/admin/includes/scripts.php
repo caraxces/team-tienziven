@@ -43,4 +43,13 @@ if (get_option('pusher_realtime_notifications') == 1) { ?>
     });
 </script>
 <?php } ?>
+
+<!-- Load custom gradient animation script -->
+<script src="<?= base_url('assets/themes/perfex/js/gradient-animation.js'); ?>"></script>
+
+<?php if(basename($_SERVER['SCRIPT_NAME']) == 'dashboard.php' || strpos($_SERVER['REQUEST_URI'], 'dashboard') !== false): ?>
+<!-- Load custom dashboard scripts for admin -->
+<script src="<?= base_url('assets/themes/perfex/js/dashboard-red.js'); ?>"></script>
+<?php endif; ?>
+
 <?php app_admin_footer(); ?>

@@ -609,3 +609,69 @@ function _maybe_system_setup_warnings()
     // Php version notice
     hooks()->add_action('before_start_render_dashboard_content', [new Message('app\services\messages\PhpVersionNotice'), 'check']);
 }
+
+/**
+ * Add module permissions for staff roles
+ * @return null
+ */
+function my_team_permissions()
+{
+    $capabilities = [];
+
+    $capabilities['capabilities'] = [
+        'view'   => _l('permission_view'),
+        'create' => _l('permission_create'),
+        'edit'   => _l('permission_edit'),
+        'delete' => _l('permission_delete'),
+    ];
+
+    register_staff_capabilities('my_team', $capabilities, _l('my_team'));
+}
+
+/**
+ * Load additional CSS and JavaScript in the admin head
+ * @return null
+ */
+function my_team_head_components()
+{
+    // CSS files
+    echo '<link href="' . base_url('application/views/admin/my_team/assets/css/my_team.css') . '?v=' . time() . '"  rel="stylesheet" type="text/css" />';
+}
+
+/**
+ * Load JavaScript in the admin footer
+ * @return null
+ */
+function my_team_footer_components()
+{
+    // JavaScript files
+    echo '<script src="' . base_url('application/views/admin/my_team/assets/js/my_team.js') . '?v=' . time() . '"></script>';
+}
+
+/**
+ * Initialize module database tables
+ * @return null
+ */
+function my_team_init_tables()
+{
+    $CI = &get_instance();
+    
+    // Load the model to create tables
+    $CI->load->model('my_team_model');
+    $CI->my_team_model->create_tables();
+}
+
+/**
+ * Khởi tạo dữ liệu mặc định cho My Team
+ * @return null
+ */
+function my_team_init_default_data()
+{
+    $CI = &get_instance();
+    
+    if (is_admin()) {
+        $CI->load->model('my_team_model');
+        $staff_id = get_staff_user_id();
+        $CI->my_team_model->ensure_admin_has_manager_rights($staff_id);
+    }
+}

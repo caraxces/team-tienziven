@@ -15,6 +15,17 @@
     </title>
 
     <?= app_compile_css(); ?>
+    
+    <!-- Custom Red Theme CSS for Admin -->
+    <link href="<?= base_url('assets/themes/perfex/css/custom-theme-red.css'); ?>" rel="stylesheet">
+    
+    <!-- Gradient Animation CSS -->
+    <link href="<?= base_url('assets/themes/perfex/css/gradient-animation.css'); ?>" rel="stylesheet">
+    
+    <?php if(basename($_SERVER['SCRIPT_NAME']) == 'dashboard.php' || strpos($_SERVER['REQUEST_URI'], 'dashboard') !== false): ?>
+    <link href="<?= base_url('assets/themes/perfex/css/dashboard-red.css'); ?>" rel="stylesheet">
+    <?php endif; ?>
+    
     <?php render_admin_js_variables(); ?>
 
     <script>

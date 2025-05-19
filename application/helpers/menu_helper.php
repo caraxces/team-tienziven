@@ -14,6 +14,48 @@ function app_init_admin_sidebar_menu_items()
         'badge'    => [],
     ]);
 
+    // Add My Team as a default menu item with position 4 (between Dashboard and Customers)
+    $CI->app_menu->add_sidebar_menu_item('my-team', [
+        'name'     => _l('my_team'),
+        'href'     => admin_url('my_team'),
+        'icon'     => 'fa fa-users',
+        'position' => 4,
+        'badge'    => [],
+    ]);
+
+    // Sub menu items
+    $CI->app_menu->add_sidebar_children_item('my-team', [
+        'slug'     => 'my-team-members',
+        'name'     => _l('team_members'),
+        'href'     => admin_url('my_team'),
+        'position' => 5,
+        'badge'    => [],
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my-team', [
+        'slug'     => 'my-team-approvals',
+        'name'     => _l('approvals'),
+        'href'     => admin_url('my_team/approvals'),
+        'position' => 10,
+        'badge'    => [],
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my-team', [
+        'slug'     => 'my-team-knowledge',
+        'name'     => _l('knowledge_items'),
+        'href'     => admin_url('my_team/knowledge'),
+        'position' => 15,
+        'badge'    => [],
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my-team', [
+        'slug'     => 'my-team-performance',
+        'name'     => _l('performance'),
+        'href'     => admin_url('my_team/performance'),
+        'position' => 20,
+        'badge'    => [],
+    ]);
+
     if (
         staff_can('view',  'customers')
         || (have_assigned_customers()

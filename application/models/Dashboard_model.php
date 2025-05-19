@@ -10,17 +10,20 @@ class Dashboard_model extends App_Model
     }
 
     /**
+     * @param integer $user_id Optional user id (default: current user)
      * @return array
      * Used in home dashboard page
      * Return all upcoming events this week
      */
-    public function get_upcoming_events()
+    public function get_upcoming_events($user_id = null)
     {
         $monday_this_week = date('Y-m-d', strtotime('monday this week'));
         $sunday_this_week = date('Y-m-d', strtotime('sunday this week'));
 
+        $staff_id = ($user_id !== null) ? $user_id : get_staff_user_id();
+
         $this->db->where("(start BETWEEN '$monday_this_week' and '$sunday_this_week')");
-        $this->db->where('(userid = ' . get_staff_user_id() . ' OR public = 1)');
+        $this->db->where('(userid = ' . $staff_id . ' OR public = 1)');
         $this->db->order_by('start', 'desc');
         $this->db->limit(6);
 
@@ -28,17 +31,20 @@ class Dashboard_model extends App_Model
     }
 
     /**
-     * @param  integer (optional) Limit upcoming events
+     * @param integer $user_id Optional user id (default: current user)
      * @return integer
      * Used in home dashboard page
      * Return total upcoming events next week
      */
-    public function get_upcoming_events_next_week()
+    public function get_upcoming_events_next_week($user_id = null)
     {
         $monday_this_week = date('Y-m-d', strtotime('monday next week'));
         $sunday_this_week = date('Y-m-d', strtotime('sunday next week'));
+        
+        $staff_id = ($user_id !== null) ? $user_id : get_staff_user_id();
+        
         $this->db->where("(start BETWEEN '$monday_this_week' and '$sunday_this_week')");
-        $this->db->where('(userid = ' . get_staff_user_id() . ' OR public = 1)');
+        $this->db->where('(userid = ' . $staff_id . ' OR public = 1)');
 
         return $this->db->count_all_results(db_prefix() . 'events');
     }

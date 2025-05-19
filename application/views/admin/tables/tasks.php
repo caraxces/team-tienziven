@@ -36,6 +36,12 @@ return App_table::find('tasks')
             $where[] = get_tasks_where_string();
         }
 
+        // Staff ID filter - for performance dashboard
+        if ($this->ci->input->get('staffid')) {
+            $staff_id = $this->ci->input->get('staffid');
+            $where[] = 'AND (' . db_prefix() . 'tasks.id IN (SELECT taskid FROM ' . db_prefix() . 'task_assigned WHERE staffid = ' . $this->ci->db->escape_str($staff_id) . '))';
+        }
+
         // Dashboard my tasks table
         if($this->ci->input->post('my_tasks')) {
             $where[] = 'AND (' . db_prefix() . 'tasks.id IN (SELECT taskid FROM ' . db_prefix() . 'task_assigned WHERE staffid = ' . get_staff_user_id() . ') AND status != '.Tasks_model::STATUS_COMPLETE.')';

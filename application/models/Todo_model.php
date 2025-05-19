@@ -39,14 +39,19 @@ class Todo_model extends App_Model
      * Get all user todos
      * @param  boolean $finished is finished todos or not
      * @param  mixed $page     pagination limit page
+     * @param  integer $user_id  specific user id (default current user)
      * @return array
      */
-    public function get_todo_items($finished, $page = '')
+    public function get_todo_items($finished, $page = '', $user_id = null)
     {
         $this->db->select();
         $this->db->from(db_prefix().'todos');
         $this->db->where('finished', $finished);
-        $this->db->where('staffid', get_staff_user_id());
+        
+        // If user_id is provided, use it, otherwise use current logged in user
+        $staff_id = ($user_id !== null) ? $user_id : get_staff_user_id();
+        $this->db->where('staffid', $staff_id);
+        
         $this->db->order_by('item_order', 'asc');
         if ($page != '' && $this->input->post('todo_page')) {
             $position = ($page * $this->todo_limit);

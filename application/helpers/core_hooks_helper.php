@@ -25,6 +25,11 @@ hooks()->add_action('admin_init', 'app_init_customer_profile_tabs');
 hooks()->add_action('admin_init', 'app_init_project_tabs');
 hooks()->add_action('admin_init', 'app_init_settings_tabs');
 hooks()->add_action('admin_init', '_maybe_set_identification_key');
+hooks()->add_action('admin_init', 'my_team_permissions');
+hooks()->add_action('admin_init', 'my_team_init_default_data');
+hooks()->add_action('app_admin_head', 'my_team_head_components');
+hooks()->add_action('app_admin_footer', 'my_team_footer_components');
+hooks()->add_action('admin_init', 'my_team_init_tables');
 
 if (get_instance()->config->item('csrf_protection')) {
     hooks()->add_action('app_admin_head', 'csrf_jquery_token');
