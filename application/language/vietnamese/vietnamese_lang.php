@@ -1127,7 +1127,7 @@ $lang['contracts_view_trash']                 = 'Xem thùng rác';
 $lang['contracts_view_all']                   = 'Tất cả';
 $lang['contracts_view_exclude_trashed']       = 'Xóa tất cả hợp đồng trong thùng rác';
 $lang['contract_value_tooltip']               = 'Đơn vị tiền gốc sẽ được sử dụng.';
-$lang['contract_trash_tooltip']               = 'Nếu bạn chuyển hợp đồng vào thùng rác, hợp đồng sẽ không hiển thị bên phía khách hàng, không đính kèm trong thống kế biểu đồ và, như mặc định, không xuất hiện nếu bạn liệt kê danh sách hợp đồng.';
+$lang['contract_trash_tooltip']               = 'Nếu bạn chuyển hợp đồng vào thùng rác, hợp đồng sẽ không hiển thị bên phía khách hàng, không đính kèm trong thống kê biểu đồ và, như mặc định, không xuất hiện nếu bạn liệt kê danh sách hợp đồng.';
 $lang['contract_summary_active']              = 'Kích hoạt';
 $lang['contract_renew_heading']               = 'Làm mới hợp đồng';
 $lang['contract_summary_heading']             = 'Tổng quan hợp đồng';
@@ -1781,7 +1781,7 @@ $lang['report_invoice_amount_open']       = 'Phần chưa thanh toán';
 $lang['report_invoice_status']            = 'Trạng thái';
 #Version 1.0.9
 # Home stats
-$lang['home_stats_by_project_status'] = 'Thống kế theo trạng thái dự án';
+$lang['home_stats_by_project_status'] = 'Thống kê theo trạng thái dự án';
 $lang['home_invoice_overview']        = 'Tổng quan hóa đơn';
 $lang['home_estimate_overview']       = 'Tổng quan báo giá';
 $lang['home_proposal_overview']       = 'Tổng quan đề xuất dự án';
@@ -2726,7 +2726,7 @@ $lang['hour_of_day_perform_auto_operations_format']         = 'Định dạng th
 $lang['inv_hour_of_day_perform_auto_operations_help']       = 'Được dùng cho hóa đơn định kỳ, thông báo quá hạn v.v...';
 $lang['use_minified_files']                                 = 'Dùng phiên bản thu nhỏ tập tin cho css và js (chỉ áp dụng cho tập tin hệ thống)';
 # Version 1.5.0
-$lang['logo_favicon_changed_notice']       = 'Phát hiện thay đổi logo hoặc Favicon. Nếu bạn vẫn nhìn thấy logo CRM gốc hãy thử xóa cache của trình duyện đang dùng';
+$lang['logo_favicon_changed_notice']       = 'Phát hiện thay đổi logo hoặc Favicon. Nếu bạn vẫn nhìn thấy logo CRM gốc hãy thử xóa cache của trình duyệt đang dùng';
 $lang['kb_search_articles']                = 'Tìm kiếm bài viết KTCM';
 $lang['kb_search']                         = 'Tìm';
 $lang['have_a_question']                   = 'Có thắc mắc?';

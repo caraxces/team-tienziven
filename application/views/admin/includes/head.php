@@ -29,6 +29,50 @@
             taskid, taskTrackingStatsData, taskAttachmentDropzone, taskCommentAttachmentDropzone, newsFeedDropzone,
             expensePreviewDropzone, taskTrackingChart, cfh_popover_templates = {},
             _table_api;
+
+        // Tối ưu performance: Preload và prefetch
+        var pagePaths = [
+            '<?php echo admin_url('dashboard'); ?>',
+            '<?php echo admin_url('clients'); ?>',
+            '<?php echo admin_url('projects'); ?>',
+            '<?php echo admin_url('tasks'); ?>'
+        ];
+        
+        // Thêm preload cho các trang thường xuyên truy cập
+        if (window.performance && window.performance.navigation.type === 0) {
+            // Chỉ prefetch khi người dùng truy cập trực tiếp (không refresh)
+            pagePaths.forEach(function(path) {
+                var link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = path;
+                document.head.appendChild(link);
+            });
+        }
+        
+        // Lazy load các hình ảnh khi scroll
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            
+            if ("IntersectionObserver" in window) {
+                var lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            var lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            if (lazyImage.dataset.srcset) {
+                                lazyImage.srcset = lazyImage.dataset.srcset;
+                            }
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
     </script>
     <?php app_admin_head(); ?>
 </head>

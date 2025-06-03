@@ -12,69 +12,59 @@ class App_Session extends CI_Session
      */
     public function __construct(array $params = [])
     {
-        // No sessions under CLI
-        if (is_cli()) {
-            log_message('debug', 'Session: Initialization under CLI aborted.');
-
-            return;
-        } elseif ((bool) ini_get('session.auto_start')) {
-            log_message('error', 'Session: session.auto_start is enabled in php.ini. Aborting.');
-
-            return;
-        } elseif (! empty($params['driver'])) {
-            $this->_driver = $params['driver'];
-            unset($params['driver']);
-        } elseif ($driver = config_item('sess_driver')) {
-            $this->_driver = $driver;
-        }
-        // Note: BC workaround
-        elseif (config_item('sess_use_database')) {
-            log_message('debug', 'Session: "sess_driver" is empty; using BC fallback to "sess_use_database".');
-            $this->_driver = 'database';
-        }
-
-        $class = $this->_ci_load_classes($this->_driver);
-
-        // Configuration ...
-        $this->_configure($params);
-        $this->_config['_sid_regexp'] = $this->_sid_regexp;
-
-        $this->_config['sess_cookie_samesite'] = config_item('sess_cookie_samesite');
-
-        $class = new $class($this->_config);
-
-        if ($class instanceof SessionHandlerInterface) {
-            if (is_php('5.4')) {
-                session_set_save_handler($class, true);
+        // No need to call parent constructor
+        
+        // Lấy các cài đặt cấu hình
+        $this->_driver = config_item('sess_driver');
+        
+        // Chỉ khởi tạo session nếu driver là files
+        if ($this->_driver !== 'database') {
+            log_message('debug', "Session: Sử dụng driver '{$this->_driver}'");
+            
+            // Tải driver phù hợp
+            $driver = 'Session_' . $this->_driver . '_driver';
+            
+            // Khởi tạo session driver
+            $driver_path = APPPATH . 'libraries/Session/drivers/' . $driver . '.php';
+            
+            if (file_exists($driver_path)) {
+                require_once $driver_path;
+                $this->_driver = new $driver($params);
+                
+                if ($this->_driver instanceof SessionHandlerInterface) {
+                    if (is_php('5.4')) {
+                        session_set_save_handler($this->_driver, true);
+                    } else {
+                        session_set_save_handler(
+                            [$this->_driver, 'open'],
+                            [$this->_driver, 'close'],
+                            [$this->_driver, 'read'],
+                            [$this->_driver, 'write'],
+                            [$this->_driver, 'destroy'],
+                            [$this->_driver, 'gc']
+                        );
+                        
+                        register_shutdown_function('session_write_close');
+                    }
+                    
+                    // Khởi tạo session
+                    session_start();
+                } else {
+                    log_message('error', "Session: Driver '{$this->_driver}' không thực hiện SessionHandlerInterface");
+                }
             } else {
-                session_set_save_handler(
-                    [$class, 'open'],
-                    [$class, 'close'],
-                    [$class, 'read'],
-                    [$class, 'write'],
-                    [$class, 'destroy'],
-                    [$class, 'gc']
-                );
-
-                register_shutdown_function('session_write_close');
+                log_message('error', "Session: Không tìm thấy driver '{$driver}'");
             }
         } else {
-            log_message('error', "Session: Driver '" . $this->_driver . "' doesn't implement SessionHandlerInterface. Aborting.");
-
-            return;
+            log_message('debug', "Session: Chuyển sang sử dụng files driver thay vì database");
+            
+            // Cấu hình session sử dụng file driver
+            ini_set('session.save_handler', 'files');
+            session_save_path(APPPATH . 'cache/sessions');
+            
+            // Khởi tạo session với file driver
+            session_start();
         }
-
-        // Sanitize the cookie, because apparently PHP doesn't do that for userspace handlers
-        if (isset($_COOKIE[$this->_config['cookie_name']])
-            && (
-                ! is_string($_COOKIE[$this->_config['cookie_name']])
-                or ! preg_match('#\A' . $this->_sid_regexp . '\z#', $_COOKIE[$this->_config['cookie_name']])
-            )
-        ) {
-            unset($_COOKIE[$this->_config['cookie_name']]);
-        }
-
-        session_start();
 
         // Is session ID auto-regeneration configured? (ignoring ajax requests)
         if ((empty($_SERVER['HTTP_X_REQUESTED_WITH']) or strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest')

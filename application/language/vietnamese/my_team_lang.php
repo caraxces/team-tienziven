@@ -1,0 +1,179 @@
+<?php
+
+# Menu
+$lang['my_team'] = 'Nhóm của tôi';
+$lang['team_approvals'] = 'Phê duyệt';
+$lang['team_performance'] = 'Hiệu suất';
+$lang['team_members'] = 'Thành viên nhóm';
+$lang['team_knowledge'] = 'Kiến thức';
+$lang['dashboard'] = 'Bảng điều khiển';
+$lang['my_team_dashboard'] = 'Bảng điều khiển Nhóm';
+
+# Approvals
+$lang['approval_add'] = 'Thêm phê duyệt';
+$lang['approval_edit'] = 'Chỉnh sửa phê duyệt';
+$lang['approval_manage'] = 'Quản lý phê duyệt';
+$lang['approval_view'] = 'Xem phê duyệt';
+$lang['approval_report'] = 'Báo cáo phê duyệt';
+$lang['approval_type'] = 'Loại phê duyệt';
+$lang['approval_status'] = 'Trạng thái phê duyệt';
+$lang['approval_type_general'] = 'Chung';
+$lang['approval_type_leave'] = 'Nghỉ phép';
+$lang['approval_type_financial'] = 'Tài chính';
+$lang['approval_type_attendance'] = 'Điểm danh';
+$lang['approval_status_pending'] = 'Đang chờ';
+$lang['approval_status_approved'] = 'Đã duyệt';
+$lang['approval_status_rejected'] = 'Từ chối';
+$lang['approval_status_cancelled'] = 'Đã hủy';
+$lang['approval_date'] = 'Ngày phê duyệt';
+$lang['approval_date_from'] = 'Từ ngày';
+$lang['approval_date_to'] = 'Đến ngày';
+$lang['approval_approve'] = 'Phê duyệt';
+$lang['approval_reject'] = 'Từ chối';
+$lang['approval_cancel'] = 'Hủy bỏ';
+$lang['approval_reason'] = 'Lý do';
+$lang['approval_rejected_reason'] = 'Lý do từ chối';
+$lang['approval_approved_by'] = 'Người phê duyệt';
+$lang['approval_rejected_by'] = 'Người từ chối';
+$lang['approval_approved_date'] = 'Ngày phê duyệt';
+$lang['approval_rejected_date'] = 'Ngày từ chối';
+$lang['approval_created_by'] = 'Người tạo';
+$lang['approval_created_date'] = 'Ngày tạo';
+$lang['pending_approvals'] = 'Đang chờ phê duyệt';
+$lang['total_approvals'] = 'Tổng số phê duyệt';
+
+# Performance
+$lang['active_projects'] = 'Dự án đang hoạt động';
+$lang['active_tasks'] = 'Công việc đang hoạt động';
+$lang['total_staff'] = 'Tổng nhân viên';
+$lang['active_staff'] = 'Nhân viên đang hoạt động';
+$lang['knowledge_items'] = 'Bài viết kiến thức';
+$lang['knowledge_categories'] = 'Danh mục kiến thức';
+$lang['recent_staff_activity'] = 'Hoạt động nhân viên gần đây';
+$lang['recent_approvals'] = 'Phê duyệt gần đây';
+$lang['recent_knowledge'] = 'Kiến thức gần đây';
+$lang['department_performance'] = 'Hiệu suất phòng ban';
+$lang['no_activity_found'] = 'Không tìm thấy hoạt động';
+$lang['no_approvals_found'] = 'Không tìm thấy phê duyệt';
+$lang['no_knowledge_items_found'] = 'Không tìm thấy bài viết';
+$lang['no_departments_found'] = 'Không tìm thấy phòng ban';
+
+# Training
+$lang['team_training'] = 'Đào tạo';
+$lang['upload_training_document'] = 'Tải lên tài liệu đào tạo';
+$lang['training_document_title'] = 'Tiêu đề tài liệu';
+$lang['training_document_category'] = 'Danh mục tài liệu';
+$lang['training_document_description'] = 'Mô tả tài liệu';
+$lang['training_document_file'] = 'File tài liệu';
+$lang['drag_drop_files_here'] = 'Kéo thả file vào đây';
+$lang['or_click_to_browse'] = 'hoặc nhấn để chọn file';
+$lang['browse_files'] = 'Chọn file';
+$lang['supported_file_types'] = 'Loại file hỗ trợ';
+$lang['max_file_size'] = 'Kích thước tối đa';
+$lang['upload_document'] = 'Tải lên tài liệu';
+$lang['assign_training_document'] = 'Giao tài liệu đào tạo';
+$lang['assign_to_staff'] = 'Giao cho nhân viên';
+$lang['view_assignments'] = 'Xem danh sách giao';
+$lang['download_document'] = 'Tải xuống tài liệu';
+$lang['total_training_documents'] = 'Tổng tài liệu đào tạo';
+$lang['my_training_documents'] = 'Tài liệu đào tạo của tôi';
+$lang['file_type'] = 'Loại file';
+$lang['assignments_count'] = 'Số lượng giao';
+$lang['completed_count'] = 'Số hoàn thành';
+$lang['no_training_documents_found'] = 'Không tìm thấy tài liệu đào tạo nào';
+$lang['upload_first_document'] = 'Tải lên tài liệu đầu tiên';
+$lang['my_training_assignments'] = 'Tài liệu được giao cho tôi';
+$lang['assigned_by'] = 'Được giao bởi';
+$lang['view_document'] = 'Xem tài liệu';
+$lang['mark_completed'] = 'Đánh dấu hoàn thành';
+$lang['completed'] = 'Hoàn thành';
+$lang['overdue'] = 'Quá hạn';
+$lang['in_progress'] = 'Đang thực hiện';
+$lang['assigned'] = 'Đã giao';
+$lang['no_training_assignments_found'] = 'Không có tài liệu nào được giao';
+$lang['document_title'] = 'Tiêu đề tài liệu';
+$lang['select_staff_members'] = 'Chọn nhân viên';
+$lang['deadline'] = 'Hạn chót';
+$lang['notes'] = 'Ghi chú';
+$lang['assignment_notes_placeholder'] = 'Ghi chú về việc giao tài liệu này...';
+$lang['assign_document'] = 'Giao tài liệu';
+$lang['view_document_assignments'] = 'Xem danh sách giao tài liệu';
+$lang['file_too_large'] = 'File quá lớn';
+$lang['please_fill_required_fields'] = 'Vui lòng điền đầy đủ thông tin bắt buộc';
+$lang['uploading'] = 'Đang tải lên';
+$lang['something_went_wrong'] = 'Có lỗi xảy ra';
+$lang['please_select_staff_members'] = 'Vui lòng chọn nhân viên';
+$lang['assigning'] = 'Đang giao';
+$lang['loading'] = 'Đang tải';
+$lang['confirm_mark_training_completed'] = 'Bạn có chắc chắn muốn đánh dấu tài liệu này đã hoàn thành?';
+$lang['processing'] = 'Đang xử lý';
+$lang['back_to_training'] = 'Quay lại đào tạo';
+$lang['reading_progress'] = 'Tiến độ đọc';
+$lang['drag_to_update_progress'] = 'Kéo để cập nhật tiến độ';
+$lang['description'] = 'Mô tả';
+$lang['assignment_notes'] = 'Ghi chú giao việc';
+$lang['document_content'] = 'Nội dung tài liệu';
+$lang['open_in_new_tab'] = 'Mở trong tab mới';
+$lang['pdf_not_supported'] = 'Trình duyệt không hỗ trợ hiển thị PDF';
+$lang['click_here_to_view'] = 'Nhấn vào đây để xem';
+$lang['video_not_supported'] = 'Trình duyệt không hỗ trợ video này';
+$lang['preview_not_available'] = 'Không thể xem trước';
+$lang['file_type_not_supported_preview'] = 'Loại file này không hỗ trợ xem trước. Vui lòng tải xuống để xem.';
+$lang['assignment_status'] = 'Trạng thái giao việc';
+$lang['current_status'] = 'Trạng thái hiện tại';
+$lang['progress'] = 'Tiến độ';
+$lang['last_accessed'] = 'Truy cập lần cuối';
+$lang['completed_at'] = 'Hoàn thành lúc';
+$lang['training_document_uploaded_successfully'] = 'Tải lên tài liệu đào tạo thành công';
+$lang['training_document_upload_failed'] = 'Tải lên tài liệu đào tạo thất bại';
+$lang['training_document_assigned_successfully'] = 'Giao tài liệu đào tạo thành công';
+$lang['training_document_assignment_failed'] = 'Giao tài liệu đào tạo thất bại';
+$lang['training_assignment_not_found'] = 'Không tìm thấy tài liệu được giao';
+$lang['training_document_marked_completed'] = 'Đã đánh dấu tài liệu hoàn thành';
+$lang['training_document_completion_failed'] = 'Đánh dấu hoàn thành thất bại';
+$lang['training_progress_updated'] = 'Cập nhật tiến độ thành công';
+$lang['training_progress_update_failed'] = 'Cập nhật tiến độ thất bại';
+$lang['training_document_deleted_successfully'] = 'Xóa tài liệu đào tạo thành công';
+$lang['training_document_deletion_failed'] = 'Xóa tài liệu đào tạo thất bại';
+$lang['invalid_request'] = 'Yêu cầu không hợp lệ';
+$lang['required_fields_missing'] = 'Thiếu thông tin bắt buộc';
+$lang['staff_member'] = 'Nhân viên';
+$lang['assigned_at'] = 'Ngày giao';
+$lang['status'] = 'Trạng thái';
+$lang['no_assignments_found_for_document'] = 'Không có ai được giao tài liệu này';
+
+# Knowledge
+$lang['knowledge_category'] = 'Danh mục kiến thức';
+$lang['general_subject'] = 'Tiêu đề';
+$lang['general_department'] = 'Phòng ban';
+$lang['general_created_at'] = 'Ngày tạo';
+
+# Members
+$lang['general_department'] = 'Phòng ban';
+$lang['staff_count'] = 'Số nhân viên';
+$lang['projects_count'] = 'Số dự án';
+$lang['tasks_count'] = 'Số công việc';
+
+# My Team Statistics
+$lang['my_team_statistics'] = 'Thống kê My Team';
+$lang['support_tickets'] = 'Phiếu hỗ trợ';
+$lang['attendance_rate'] = 'Tỷ lệ điểm danh';
+$lang['this_month'] = 'Tháng này';
+$lang['read'] = 'Đã đọc';
+$lang['open'] = 'Đang mở';
+$lang['pending'] = 'Đang chờ';
+
+# Staff Management
+$lang['new_staff'] = 'Thêm nhân viên mới';
+$lang['edit_staff'] = 'Chỉnh sửa nhân viên';
+$lang['delete_staff'] = 'Xóa nhân viên';
+$lang['no_members_found'] = 'Không tìm thấy thành viên nào';
+$lang['general_staff_role'] = 'Vai trò';
+$lang['general_search'] = 'Tìm kiếm';
+$lang['general_search_placeholder'] = 'Tìm theo tên, email...';
+$lang['general_reset'] = 'Đặt lại';
+$lang['general_send_email'] = 'Gửi email';
+$lang['general_phone'] = 'Điện thoại';
+$lang['staff_admin_profile'] = 'Quản trị viên';
+$lang['staff_inactive_account'] = 'Tài khoản không hoạt động';
+$lang['dropdown_non_selected_tex'] = 'Chọn...'; 

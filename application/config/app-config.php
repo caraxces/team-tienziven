@@ -78,11 +78,21 @@ define('APP_DB_COLLATION', 'utf8mb4_unicode_ci');
  * In case you are having problem with the SESS_SAVE_PATH consult with your hosting provider to set "session.save_path" value to php.ini
  *
  */
-define('SESS_DRIVER', 'database');
-define('SESS_SAVE_PATH', 'sessions');
+define('SESS_DRIVER', 'files');
+define('SESS_SAVE_PATH', NULL);
 define('APP_SESSION_COOKIE_SAME_SITE', 'Lax');
 
 /**
  * Enables CSRF Protection
  */
 define('APP_CSRF_PROTECTION', true); 
+
+/**
+ * Error Logging Threshold
+ * 0 = Disables logging, Error logging TURNED OFF
+ * 1 = Error Messages (including PHP errors)
+ * 2 = Debug Messages
+ * 3 = Informational Messages
+ * 4 = All Messages
+ */
+define('APP_LOG_THRESHOLD', 4); 

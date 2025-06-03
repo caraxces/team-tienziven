@@ -3938,3 +3938,25 @@ $lang['ideal_gateway_keys_not_configured'] = 'iDEAL Payment Gateway API not conf
 $lang['ideal_gateway_cannot_be_activated_keys_not_configured'] = 'iDEAL Payment Gateway cannot be activated as the Stripe Publishable/API key is not configured.';
 $lang['company_logo_light'] = 'Company Logo Light';
 $lang['welcome_back_sign_in'] = 'Welcome, please sign in to your dashboard';
+
+/* My Team Module */
+$lang['my_team'] = 'My Team';
+$lang['dashboard'] = 'Dashboard';
+$lang['team_members'] = 'Team Members';
+$lang['team_approvals'] = 'Approvals';
+$lang['team_knowledge'] = 'Knowledge';
+$lang['team_performance'] = 'Performance';
+$lang['feature_coming_soon'] = 'This feature is coming soon';
+$lang['leave_requests'] = 'Leave Requests';
+$lang['other_approvals'] = 'Other Approvals';
+$lang['kb_categories'] = 'Knowledge Base Categories';
+$lang['recent_articles'] = 'Recent Articles';
+$lang['tasks_summary'] = 'Tasks Summary';
+$lang['tasks_completed'] = 'Completed Tasks';
+$lang['tasks_in_progress'] = 'Tasks In Progress';
+$lang['tasks_not_started'] = 'Tasks Not Started';
+$lang['project_overview'] = 'Project Overview';
+$lang['projects_completed'] = 'Completed Projects';
+$lang['projects_in_progress'] = 'Projects In Progress';
+$lang['projects_not_started'] = 'Projects Not Started';
+$lang['active_members'] = 'Active Team Members';

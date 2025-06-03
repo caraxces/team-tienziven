@@ -14,6 +14,44 @@ function app_init_admin_sidebar_menu_items()
         'badge'    => [],
     ]);
 
+    // Thêm menu My Team sau Dashboard
+    $CI->app_menu->add_sidebar_menu_item('my_team', [
+        'name'     => _l('my_team'),
+        'href'     => admin_url('my_team'),
+        'position' => 2,
+        'icon'     => 'fa fa-users',
+        'badge'    => [],
+    ]);
+    
+    // Thêm các menu con cho My Team
+    $CI->app_menu->add_sidebar_children_item('my_team', [
+        'slug'     => 'team_members',
+        'name'     => _l('team_members'),
+        'href'     => admin_url('my_team/members'),
+        'position' => 5,
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my_team', [
+        'slug'     => 'team_approvals',
+        'name'     => _l('team_approvals'),
+        'href'     => admin_url('my_team/approvals'),
+        'position' => 10,
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my_team', [
+        'slug'     => 'team_knowledge',
+        'name'     => _l('team_knowledge'),
+        'href'     => admin_url('my_team/knowledge'),
+        'position' => 15,
+    ]);
+    
+    $CI->app_menu->add_sidebar_children_item('my_team', [
+        'slug'     => 'team_performance',
+        'name'     => _l('team_performance'),
+        'href'     => admin_url('my_team/performance'),
+        'position' => 20,
+    ]);
+
     if (
         staff_can('view',  'customers')
         || (have_assigned_customers()

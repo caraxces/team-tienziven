@@ -106,6 +106,33 @@ $hook['post_controller'] = function () {
     }
 };
 
+// Hook cho view path của my_team
+$hook['post_controller_constructor'][] = array(
+    'class'    => '',
+    'function' => 'my_team_add_views_path',
+    'filename' => 'my_team_hooks.php',
+    'filepath' => 'hooks',
+    'params'   => ''
+);
+
+// Hook cho app menu cơ bản
+$hook['post_controller_constructor'][] = array(
+    'class'    => '',
+    'function' => 'app_init_admin_sidebar_menu_items',
+    'filename' => 'app_hooks.php',
+    'filepath' => 'hooks',
+    'params'   => ''
+);
+
+// Hook cho menu my_team (được thêm sau cùng để ghi đè nếu cần)
+$hook['post_controller_constructor'][] = array(
+    'class'    => '',
+    'function' => 'my_team_add_menu_items',
+    'filename' => 'my_team_hooks.php',
+    'filepath' => 'hooks',
+    'params'   => ''
+);
+
 if (file_exists(APPPATH . 'config/my_hooks.php')) {
     include_once APPPATH . 'config/my_hooks.php';
 }

@@ -325,13 +325,13 @@ $config['cache_path'] = '';
 |
 |   FALSE      = Disabled
 |   TRUE       = Enabled, take all query parameters into account.
-|                Please be aware that this may result in numerous cache
-|                files generated for the same page over and over again.
+|               Please be aware that this may result in numerous cache
+|               files generated for the same page over and over again.
 |   array('q') = Enabled, but only take into account the specified list
-|                of query parameters.
+|               of query parameters.
 |
 */
-$config['cache_query_string'] = false;
+$config['cache_query_string'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -341,7 +341,7 @@ $config['cache_query_string'] = false;
 | If you use the Encryption class, you must set an encryption key.
 | See the user guide for more info.
 |
-| http://codeigniter.com/user_guide/libraries/encryption.html
+| https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
 $config['encryption_key'] = APP_ENC_KEY;
@@ -409,10 +409,10 @@ $config['encryption_key'] = APP_ENC_KEY;
 |           -   Clearly communicate you intentionally want the cookie sent in a third-party context.
 |
 */
-$config['sess_driver']             = SESS_DRIVER;
+$config['sess_driver']             = 'files';
 $config['sess_cookie_name']        = (defined('APP_SESSION_COOKIE_NAME') ? APP_SESSION_COOKIE_NAME : 'sp_session');
 $config['sess_expiration']         = (defined('APP_SESSION_EXPIRATION') ? APP_SESSION_EXPIRATION : 28800);
-$config['sess_save_path']          = SESS_SAVE_PATH;
+$config['sess_save_path']          = APPPATH . 'cache/sessions/';
 $config['sess_match_ip']           = (defined('APP_SESSION_MATCH_IP') ? APP_SESSION_MATCH_IP : false);
 $config['sess_time_to_update']     = (defined('APP_SESSION_TIME_TO_UPDATE') ? APP_SESSION_TIME_TO_UPDATE : 300);
 $config['sess_regenerate_destroy'] = (defined('APP_SESSION_REGENERATE_DESTROY') ? APP_SESSION_REGENERATE_DESTROY : false);

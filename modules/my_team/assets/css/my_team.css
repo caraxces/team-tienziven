@@ -1,0 +1,290 @@
+/**
+ * My Team Module CSS
+ */
+
+/* Dashboard widgets */
+.user-dashboard-widget {
+    margin-bottom: 20px;
+}
+
+.user-dashboard-widget .info-box-icon {
+    color: #fff;
+}
+
+.user-dashboard-widget .progress {
+    margin-bottom: 5px;
+    height: 5px;
+}
+
+.user-dashboard-widget .panel-body {
+    padding: 15px;
+}
+
+.user-dashboard-widget .hr-panel-heading-dashboard {
+    margin: 10px 0;
+}
+
+.user-dashboard-widget .activity-feed {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.user-dashboard-widget .feed-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-dashboard-widget .feed-item:last-child {
+    border-bottom: none;
+}
+
+.user-dashboard-widget .feed-item .date {
+    color: #999;
+    font-size: 12px;
+}
+
+/* Approval styles */
+.approval-type-fields {
+    padding: 15px;
+    border: 1px solid #f0f0f0;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.widget-bg-color-white {
+    background-color: #fff;
+    border: 1px solid #e7ecf1;
+}
+
+.border-radius {
+    border-radius: 4px;
+}
+
+.widget-stat-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.widget-stat-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.widget-subtitle {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Info boxes */
+.info-box-horizontal {
+    display: block;
+    min-height: 90px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.info-box-horizontal .info-box-icon {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 2px;
+    display: block;
+    float: left;
+    height: 90px;
+    width: 90px;
+    text-align: center;
+    font-size: 45px;
+    line-height: 90px;
+    background: rgba(0,0,0,0.2);
+}
+
+.info-box-horizontal .info-box-content {
+    padding: 5px 10px;
+    margin-left: 90px;
+}
+
+.info-box-horizontal .info-box-number {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.info-box-horizontal .progress-description {
+    display: block;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Recommendations */
+.recommendations-list {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.recommendations-list li {
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.recommendations-list li i {
+    margin-right: 10px;
+}
+
+/* Training resources */
+.training-resource {
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    padding: 15px;
+    margin-bottom: 15px;
+    min-height: 130px;
+}
+
+.training-resource h4 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+.training-resource p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Loading state */
+.user-dashboard-group.loading {
+    position: relative;
+    min-height: 200px;
+}
+
+.user-dashboard-group.loading:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.7) url('../../../assets/images/spinner-sm.gif') no-repeat center center;
+    z-index: 9;
+}
+
+/* Custom badges for types */
+.badge-primary {
+    background-color: #007bff;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-success {
+    background-color: #28a745;
+}
+
+/* Member styles */
+.staff-member-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.staff-member-card:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
+}
+
+.staff-member-list {
+    margin-bottom: 20px;
+}
+
+.staff-profile-image-medium {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.staff-profile-image-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Knowledge styles */
+.knowledge-content {
+    line-height: 1.6;
+}
+
+.knowledge-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.knowledge-filter {
+    margin-bottom: 20px;
+}
+
+/* Performance Dashboard */
+.performance-filter {
+    margin-bottom: 20px;
+}
+
+.performance-stats {
+    margin-bottom: 25px;
+}
+
+.performance-stats .stat-box {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.performance-stats .stat-box h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.performance-stats .stat-box p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+.performance-stats .stat-box .icon {
+    float: right;
+    font-size: 40px;
+    opacity: 0.3;
+    margin-top: -10px;
+}
+
+.performance-chart {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.performance-chart .chart-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+} 

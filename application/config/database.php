@@ -95,14 +95,14 @@ $db['default'] = array_merge([
     'pconnect'     => false,
     'db_debug'     => (ENVIRONMENT !== 'production'),
     'cache_on'     => false,
-    'cachedir'     => '',
+    'cachedir'     => APPPATH . 'cache/db_cache/',
     'char_set'     => defined('APP_DB_CHARSET') ? APP_DB_CHARSET : 'utf8',
     'dbcollat'     => defined('APP_DB_COLLATION') ? APP_DB_COLLATION : 'utf8_general_ci',
     'swap_pre'     => '',
     'encrypt'      => $db_encrypt,
     'compress'     => false,
     'failover'     => [],
-    'save_queries' => true,
+    'save_queries' => ENVIRONMENT !== 'production',
 ], defined('APP_DB_STRICTON') && APP_DB_STRICTON || !defined('APP_DB_STRICTON') ? ['stricton' => false] : []);
 
 /**

@@ -1,0 +1,258 @@
+/* My Team Module CSS */
+
+/* Dashboard Styles */
+.dashboard-summary-badge {
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dashboard-summary-label {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.dashboard-panel {
+    height: 100%;
+    min-height: 120px;
+    color: #fff;
+    position: relative;
+    padding: 15px;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center;
+}
+
+.dashboard-panel-primary {
+    background: linear-gradient(to right, #4e73df, #224abe);
+}
+
+.dashboard-panel-success {
+    background: linear-gradient(to right, #1cc88a, #13855c);
+}
+
+.dashboard-panel-info {
+    background: linear-gradient(to right, #36b9cc, #258391);
+}
+
+.dashboard-panel-warning {
+    background: linear-gradient(to right, #f6c23e, #dda20a);
+}
+
+.dashboard-panel-danger {
+    background: linear-gradient(to right, #e74a3b, #be2617);
+}
+
+.dashboard-panel-secondary {
+    background: linear-gradient(to right, #858796, #60616f);
+}
+
+.dashboard-panel-content {
+    position: relative;
+    z-index: 1;
+}
+
+.dashboard-panel .icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.3;
+    font-size: 48px;
+    z-index: 0;
+}
+
+/* Knowledge Item Styles */
+.knowledge-item {
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.knowledge-item:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.knowledge-item-header {
+    padding: 15px;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.knowledge-item-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.knowledge-item-content {
+    padding: 15px;
+}
+
+.knowledge-item-footer {
+    padding: 10px 15px;
+    background-color: #f8f9fc;
+    border-top: 1px solid #e9ecef;
+    font-size: 12px;
+}
+
+.knowledge-category-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    margin-right: 5px;
+    background-color: #e9ecef;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Performance Dashboard */
+.performance-chart-container {
+    height: 300px;
+    margin-bottom: 30px;
+}
+
+.performance-stat-box {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.performance-stat-box .icon {
+    float: right;
+    font-size: 28px;
+    opacity: 0.3;
+}
+
+.performance-stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.performance-stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.performance-progress-container {
+    margin-top: 10px;
+}
+
+.task-completion-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task-completion-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.task-completion-item:last-child {
+    border-bottom: none;
+}
+
+.task-completion-status {
+    float: right;
+}
+
+/* Activity Feed */
+.activity-feed {
+    padding: 15px;
+}
+
+.feed-item {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    border-left: 2px solid #e9ecef;
+}
+
+.feed-item:last-child {
+    border-color: transparent;
+}
+
+.feed-item .date {
+    display: block;
+    position: relative;
+    color: #6c757d;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.feed-item .date:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: -36px;
+    top: 5px;
+    border: 2px solid #e9ecef;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.feed-item .text {
+    position: relative;
+}
+
+/* Attendance Calendar */
+.attendance-calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-calendar th, 
+.attendance-calendar td {
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.attendance-calendar th {
+    background-color: #f8f9fc;
+    font-weight: 600;
+}
+
+.attendance-calendar .present {
+    background-color: #e3fcef;
+}
+
+.attendance-calendar .absent {
+    background-color: #feeae9;
+}
+
+.attendance-calendar .late {
+    background-color: #fff3cd;
+}
+
+.attendance-calendar .holiday {
+    background-color: #e9ecef;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .performance-chart-container {
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .performance-chart-container {
+        height: 200px;
+    }
+}
