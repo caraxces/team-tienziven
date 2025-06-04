@@ -139,6 +139,19 @@ $lang['performance_last_activity'] = 'Hoạt động gần nhất';
 $lang['performance_select_staff'] = 'Chọn nhân viên';
 $lang['performance_staff_overview'] = 'Tổng quan nhân viên';
 $lang['performance_department_overview'] = 'Tổng quan phòng ban';
+$lang['performance_viewing_for'] = 'Đang xem hiệu suất của';
+$lang['performance_period'] = 'Thời gian';
+$lang['performance_tasks_overview'] = 'Tổng quan Công việc';
+$lang['performance_projects_overview'] = 'Tổng quan Dự án';
+$lang['performance_tickets_overview'] = 'Tổng quan Tickets';
+$lang['performance_summary'] = 'Tổng kết hiệu suất';
+$lang['overall_performance'] = 'Hiệu suất tổng thể';
+$lang['attendance_overview'] = 'Tổng quan Chuyên cần';
+$lang['attendance_rate'] = 'Tỷ lệ đi làm';
+$lang['no_permission_to_view_staff_performance'] = 'Bạn không có quyền xem hiệu suất của nhân viên này';
+$lang['view_staff_profile'] = 'Xem thông tin nhân viên';
+$lang['detailed_charts'] = 'Biểu đồ chi tiết';
+$lang['days'] = 'ngày';
 
 # General
 $lang['general_subject'] = 'Tiêu đề';
